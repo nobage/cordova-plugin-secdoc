@@ -1,10 +1,14 @@
 {
-  "name": "cordova.plugin.installapk",
-  "version": "1.0.0",
+  "name": "cordova.plugin.secdoc",
+  "version": "1.0.1",
   "description": "only for myself project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobage/cordova-plugin-secdoc.git"
   },
   "author": "",
   "license": "ISC"
