@@ -140,12 +140,14 @@ public class SecDecode extends CordovaPlugin{
                             Log.d("SecDocPlugin","getTicket success :"+ticket);
                         } else if (result != null && result.equals(HttpFields.NET_REQUEST_FAIL)) {
                             post[0] = (String) stringObjectMap.get("error");
+                            callbackContext.error( post[0]);
                         }
                     }
 
                     @Override
                     public void CallBackError(String error) {
                         post[0] = error;
+                        callbackContext.error(error);
                         Log.d("SecDocPlugin","getTicket fail :"+error);
                     }
                 });
@@ -175,7 +177,7 @@ public class SecDecode extends CordovaPlugin{
             @Override
             public void CallBackError(int errorCode, String errorInfo) {
                 showToast("身份认证失败"+ errorInfo);
-                callbackContext.success(0);
+                callbackContext.error(errorInfo);
             }
         });
     }
@@ -198,7 +200,7 @@ public class SecDecode extends CordovaPlugin{
 
                 @Override
                 public void CallBackError(int i, String s) {
-                    callbackContext.success(0);
+                    callbackContext.error(s);
                     showToast(fileName + "失败：" + s);
                 }
             });
@@ -228,8 +230,7 @@ public class SecDecode extends CordovaPlugin{
 
                     @Override
                     public void CallBackError(int errorCode, String errorInfo) {
-                        callbackContext.success(0);
-                        showToast("失败：" + errorInfo);
+                        callbackContext.error(errorInfo);
                     }
                 });
             } else {
@@ -241,7 +242,6 @@ public class SecDecode extends CordovaPlugin{
             return true;
         }
         return true;
-
     }
 
     private boolean checkOpenFileType(String ext) {
