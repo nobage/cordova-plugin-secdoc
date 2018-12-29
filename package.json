@@ -1,6 +1,6 @@
 {
   "name": "cordova.plugin.secdoc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "only for myself project",
   "main": "index.js",
   "scripts": {

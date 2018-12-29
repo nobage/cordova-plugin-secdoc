@@ -108,9 +108,9 @@
              cipherPath = [NSString stringWithFormat:@"%@/www/assets/file/%@",[[NSBundle mainBundle]resourcePath],cipherFilePath];
          }
          NSString *decodeFilePath = [NSString stringWithFormat:@"%@/p_%@",[self pm_tempPath],fileName];
-         if ([isCipher isEqualToString:@"0"]) {
+//         if ([isCipher isEqualToString:@"0"]) {
              decodeFilePath = cipherPath;
-         }
+//         }
          [[SDSSecDocManager sharedInstance] sds_lookDocWithNavigationController:nil docPath:decodeFilePath failure:^(NSError *error) {
              NSString *locationStr = [NSString stringWithFormat:@"打开文件失败：%@", error];
              NSLog(@"%@",locationStr);
