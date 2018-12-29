@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-secdoc" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SecDoc</name>
+
+    <js-module name="SecPlugin" src="www/SecDoc.js">
+        <clobbers target="SecDoc"/>
+    </js-module>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SecDecode">
+                <param name="ios-package" value="SecDecode"/>
+            </feature>
+        </config-file>
+        <!--<source-file src="src/ios/SecPlugin.m"/>-->
+        <header-file src="src/ios/SecDecode.h"/>
+        <source-file src="src/ios/SecDecode.m"/>
+
+        <header-file src="src/ios/AFNetworking/AFCompatibilityMacros.h"/>
+        <header-file src="src/ios/AFNetworking/AFHTTPSessionManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFHTTPSessionManager.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking.h"/>
+        <header-file src="src/ios/AFNetworking/AFNetworkReachabilityManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworkReachabilityManager.m"/>
+        <header-file src="src/ios/AFNetworking/AFSecurityPolicy.h"/>
+        <source-file src="src/ios/AFNetworking/AFSecurityPolicy.m"/>
+        <header-file src="src/ios/AFNetworking/AFURLRequestSerialization.h"/>
+        <source-file src="src/ios/AFNetworking/AFURLRequestSerialization.m"/>
+        <header-file src="src/ios/AFNetworking/AFURLResponseSerialization.h"/>
+        <source-file src="src/ios/AFNetworking/AFURLResponseSerialization.m"/>
+        <header-file src="src/ios/AFNetworking/AFURLSessionManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFURLSessionManager.m"/>
+
+        <header-file src="src/ios/HttpTool.h"/>
+        <source-file src="src/ios/HttpTool.m"/>
+
+        <framework src="SystemConfiguration.framework" />
+        <framework src="MobileCoreServices.framework" />
+        <framework src="Security.framework" />
+        <framework src="libxml2.tbd" />
+        <framework src="libstdc++.tbd" />
+        <framework src="libz.tbd" />
+
+        <framework src="src/ios/SecDocSDk.framework" custom="true" framework="true"/>
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SecDecode">
+                <param name="android-package" value="cordova.plugins.secdoc.SecDecode"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.WordIsActivity"/>
+			<activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.TXTIsActivity"/>
+			<activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.PresentationIsActivity"/>
+			<activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.SpreadsheetIsActivity"/>
+            <activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.PDFIsActivity"/>
+            <provider
+                    android:name="android.support.v4.content.FileProvider"
+                    android:authorities="cordova.plugins.secdoc.custom.fileprovider"
+                    android:exported="false"
+                    android:grantUriPermissions="true">
+                <meta-data
+                        android:name="android.support.FILE_PROVIDER_PATHS"
+                        android:resource="@xml/filepaths" />
+            </provider>
+        </config-file>
+        <source-file src="src/android/SecDecode.java" target-dir="src/cordova/plugins/secdoc"/>
+        <source-file src="src/android/http/ConnectUtil.java" target-dir="src/cordova/plugins/secdoc/http"/>
+        <source-file src="src/android/http/HttpFields.java" target-dir="src/cordova/plugins/secdoc/http"/>
+        <source-file src="src/android/http/HttpUtil.java" target-dir="src/cordova/plugins/secdoc/http"/>
+        <source-file src="src/android/http/XMLPullUtils.java" target-dir="src/cordova/plugins/secdoc/http"/>
+        <source-file src="src/android/xml/filepaths.xml" target-dir="res/xml" />
+        <source-file src="src/android/libs/SecureDocSDK_1.3.3.aar" target-dir="libs" />
+        <framework src="src/android/android-build.gradle" custom="true" type="gradleReference" />
+    </platform>
+</plugin>
