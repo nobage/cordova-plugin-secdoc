@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova.plugin.secdoc" version="1.0.4" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+<plugin id="cordova.plugin.secdoc" version="1.0.5" xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>SecDoc</name>
 
@@ -62,7 +62,7 @@
             <activity android:name="com.eetrust.securedocsdk.utils.fileIsOpen.PDFIsActivity"/>
             <provider
                     android:name="android.support.v4.content.FileProvider"
-                    android:authorities="cordova.plugins.secdoc.custom.fileprovider"
+                    android:authorities="cordova.plugin.secdoc.fileprovider"
                     android:exported="false"
                     android:grantUriPermissions="true">
                 <meta-data
