@@ -217,7 +217,14 @@ public class SecDecode extends CordovaPlugin {
 
                     @Override
                     public void CallBackError(int errorCode, String errorInfo) {
-                        callbackContext.error(errorInfo);
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put("errorCode",errorCode);
+                            jsonObject.put("errorInfo",errorInfo);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        callbackContext.error(jsonObject);
                     }
                 });
             } else {
