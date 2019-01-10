@@ -5,5 +5,5 @@ repositories {
 }
 
 dependencies {
-    compile(name: 'SecureDocSDK_1.3.3', ext: 'aar')
+    compile(name: 'SecureDocSDK_1.3.4', ext: 'aar')
 }

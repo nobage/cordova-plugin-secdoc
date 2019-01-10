@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova.plugin.secdoc" version="1.0.6" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+<plugin id="cordova.plugin.secdoc" version="1.0.7" xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>SecDoc</name>
 
@@ -76,7 +76,7 @@
         <source-file src="src/android/http/HttpUtil.java" target-dir="src/cordova/plugins/secdoc/http"/>
         <source-file src="src/android/http/XMLPullUtils.java" target-dir="src/cordova/plugins/secdoc/http"/>
         <source-file src="src/android/xml/filepaths.xml" target-dir="res/xml" />
-        <source-file src="src/android/libs/SecureDocSDK_1.3.3.aar" target-dir="libs" />
+        <source-file src="src/android/libs/SecureDocSDK_1.3.4.aar" target-dir="libs" />
         <framework src="src/android/android-build.gradle" custom="true" type="gradleReference" />
     </platform>
 </plugin>
